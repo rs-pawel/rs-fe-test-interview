@@ -4,11 +4,11 @@
  */
 
 export interface paths {
-  '/items': {
+  '/api/items': {
     get: operations['listItems'];
     post: operations['createItem'];
   };
-  [key: `/items/${number}`]: {
+  [key: `/api/items/${number}`]: {
     delete: operations['deleteItem'];
   };
 }
@@ -46,7 +46,9 @@ export interface operations {
     parameters: {
       query: {
         /** Filter item */
-        id?: components['schemas']['ItemFilter'];
+        filter?: components['schemas']['ItemFilter'];
+        /** Pagination */
+        pagination?: components['schemas']['PaginationRequest'];
       };
     };
     responses: {
@@ -67,7 +69,7 @@ export interface operations {
       /** Item was created */
       201: {
         content: {
-          'application/json': unknown;
+          'application/json': components['schemas']['ItemWithId'];
         };
       };
     };
@@ -82,7 +84,7 @@ export interface operations {
     parameters: {
       path: {
         /** ID of item to delete */
-        item_id: number;
+        itemId: number;
       };
     };
     responses: {
@@ -95,7 +97,7 @@ export interface operations {
 export interface external {}
 
 export enum ApiPaths {
-  listItems = '/items',
-  createItem = '/items',
-  deleteItem = '/items/:item_id',
+  listItems = '/api/items',
+  createItem = '/api/items',
+  deleteItem = '/api/items/:itemId',
 }

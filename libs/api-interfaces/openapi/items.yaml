@@ -3,16 +3,21 @@ info:
   title: Items
   version: 1.0.0
 paths:
-  /items:
+  /api/items:
     get:
       summary: Get list of items
       operationId: listItems
       parameters:
         - in: query
-          name: id
+          name: filter
           description: Filter item
           schema:
             $ref: '#/components/schemas/ItemFilter'
+        - in: query
+          name: pagination
+          description: Pagination
+          schema:
+            $ref: '#/components/schemas/PaginationRequest'
       responses:
         200:
           description: OK
@@ -43,14 +48,14 @@ paths:
           content:
             application/json:
               schema:
-              $ref: '#/components/schemas/ItemWithId'
-  /items/{item_id}:
+                $ref: '#/components/schemas/ItemWithId'
+  /api/items/{itemId}:
     delete:
       summary: Delete item
       operationId: deleteItem
       parameters:
         - in: path
-          name: item_id
+          name: itemId
           description: ID of item to delete
           required: true
           schema:
