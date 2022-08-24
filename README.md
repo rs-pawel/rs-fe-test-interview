@@ -10,7 +10,7 @@ Applications:
 * `apps/interview` is actual react app with api connectors and react-query preinstalled
 
 # API connectors
-Located in `apps/interview/src/app/api`. Basically they are functions that return promise (which resolves to actual response). [See detailed documentation](./docs/index.html)
+Located in `apps/interview/src/app/api`. Basically they are functions that return promise (which resolves to actual response). See `docs/` directory.
 
 # Run Dev Server
 ```

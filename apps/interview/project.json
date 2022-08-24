@@ -78,6 +78,13 @@
         "jestConfig": "apps/interview/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "generate-documentation": {
+      "executor": "nx:run-commands",
+      "outputs": ["docs"],
+      "options": {
+        "command": "typedoc apps/interview/src/app/api/index.ts --tsconfig apps/interview/tsconfig.app.json --readme none"
+      }
     }
   },
   "tags": []
