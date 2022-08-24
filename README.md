@@ -1,2 +1,6 @@
-# rs-fe-test-interview
-FE team interview repo
+# RS Interview
+Repository for interviews with new developers
+# Run Dev Server
+```
+yarn start
+```
