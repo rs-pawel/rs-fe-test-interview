@@ -9,8 +9,14 @@ Applications:
 * `apps/api` contains express application which has in-memory database and handles api routes
 * `apps/interview` is actual react app with api connectors and react-query preinstalled
 
-# API connectors
-Located in `apps/interview/src/app/api`. Basically they are functions that return promise (which resolves to actual response). See `docs/` directory.
+# API Connectors
+Located in `apps/interview/src/app/api`. Basically they are functions that return promise (which resolves to actual response).
+
+# API Documentation
+After running app - available under http://127.0.0.1:4200/#/api-docs
+
+# Tasks
+1. Coding task located in `apps/interview/src/CodingTask`
 
 # Run Dev Server
 ```

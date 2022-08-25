@@ -17,6 +17,8 @@ import { initializeItemRoutes } from './app/routes';
 
   const app = express();
 
+  app.use('/api/openapi', express.static('libs/api-interfaces/openapi'))
+
   app.use(bodyParser.json());
 
   initializeItemRoutes(app);

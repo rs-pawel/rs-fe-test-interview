@@ -1,5 +1,3 @@
-import axios from 'axios';
-import { stringify } from 'qs';
 import Route from 'route-parser';
 import {
   ItemAPIPaths,
@@ -10,21 +8,30 @@ import {
   DeleteItemRequest,
 } from '@rs/api-interfaces';
 
-export const getItems = (params?: ListItemsRequest) =>
-  axios
-    .get<ListItemsResponse>(ItemAPIPaths.listItems, {
-      params,
-      paramsSerializer: stringify,
-    })
-    .then(({ data }) => data);
+export const getItems = async (
+  params?: ListItemsRequest
+): Promise<ListItemsResponse> => {
+  // Implementation
+  // Path: ItemAPIPaths.listItems
 
-export const createItem = (item: CreateItemRequest) =>
-  axios
-    .post<CreateItemResponse>(ItemAPIPaths.createItem, item)
-    .then(({ data }) => data);
+  return {} as ListItemsResponse;
+};
+
+export const createItem = async (
+  item: CreateItemRequest
+): Promise<CreateItemResponse> => {
+  // Implementation
+  // Path: ItemAPIPaths.createItem
+
+  return {} as CreateItemResponse;
+};
 
 const deleteRoute = new Route(ItemAPIPaths.deleteItem);
-export const deleteItem = (itemId: DeleteItemRequest['itemId']) =>
-  axios
-    .delete<undefined>(deleteRoute.reverse({ itemId }) as string)
-    .then(({ data }) => data);
+export const deleteItem = async (
+  itemId: DeleteItemRequest['itemId']
+): Promise<undefined> => {
+  // Implementation
+  // Path: deleteRoute.reverse({ itemId })
+
+  return undefined;
+};
