@@ -15,10 +15,7 @@
         "main": "apps/interview/src/main.tsx",
         "polyfills": "apps/interview/src/polyfills.ts",
         "tsConfig": "apps/interview/tsconfig.app.json",
-        "assets": [
-          "apps/interview/src/favicon.ico",
-          "apps/interview/src/assets"
-        ],
+        "assets": ["apps/interview/src/assets"],
         "styles": [],
         "scripts": [],
         "webpackConfig": "apps/interview/webpack.config.js"
