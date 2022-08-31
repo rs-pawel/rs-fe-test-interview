@@ -27,12 +27,13 @@ paths:
                 type: object
                 required:
                   - items
-                  - pagination
                 properties:
                   items:
                     type: array
                     items:
                       $ref: '#/components/schemas/ItemWithId'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationResponse'
     post:
       summary: Create item
       operationId: createItem
@@ -49,6 +50,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ItemWithId'
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemBadRequest'
   /api/items/{itemId}:
     delete:
       summary: Delete item
@@ -95,6 +102,24 @@ components:
         title:
           type: string
         description:
+          type: string
+    ItemBadRequest:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/BadRequestError'
+    BadRequestError:
+      type: object
+      properties:
+        path:
+          type: string
+        message:
+          type: string
+        errorCode:
           type: string
     PaginationRequest:
       type: object

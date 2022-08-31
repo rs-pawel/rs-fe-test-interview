@@ -57,8 +57,7 @@ export interface operations {
         content: {
           'application/json': {
             items: components['schemas']['ItemWithId'][];
-          } & {
-            pagination: unknown;
+            pagination?: components['schemas']['PaginationResponse'];
           };
         };
       };

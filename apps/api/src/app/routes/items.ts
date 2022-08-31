@@ -14,9 +14,6 @@ import {
 import { Item } from '../entities';
 import { itemRepository } from '../data-source';
 
-const DEFAULT_PER = 10;
-const DEFAULT_PAGE = 0;
-
 export const initializeItemRoutes = (app: Express) => {
   app.use(
     OpenApiValidator.middleware({
@@ -33,25 +30,40 @@ export const initializeItemRoutes = (app: Express) => {
     ListItemsRequest
   >(ItemAPIPaths.listItems, async ({ query }, res, next) => {
     try {
-      const per = query?.pagination?.per || DEFAULT_PER;
-      const page = query?.pagination?.page || DEFAULT_PAGE;
+      const per = +query?.pagination?.per;
+      const page = +query?.pagination?.page;
 
-      const [items, total] = await itemRepository.findAndCount({
+      if(per && per > 0 || page && page >= 0) {
+        const [items, total] = await itemRepository.findAndCount({
+          where: mapValues(query.filter, (filterValue) =>
+            Like(`%${filterValue}%`)
+          ),
+          take: per,
+          skip: page * per,
+        });
+
+        res.send({
+          items,
+          pagination: {
+            page,
+            per,
+            total,
+          },
+        });
+        return;
+      }
+      
+      const [items] = await itemRepository.findAndCount({
         where: mapValues(query.filter, (filterValue) =>
           Like(`%${filterValue}%`)
-        ),
-        take: per,
-        skip: page * per,
+        )
       });
 
       res.send({
-        items,
-        pagination: {
-          page,
-          per,
-          total,
-        },
+        items
       });
+      return;
+
     } catch (error) {
       next(error);
     }
