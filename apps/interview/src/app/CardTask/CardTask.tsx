@@ -24,8 +24,7 @@ const CardTask = () => (
       <Card
         imageSrc="/assets/images/card-media.jpeg"
         title="Dog"
-        description="The dog or domestic dog is a domesticated descendant of the wolf. The dog is
-        derived from an ancient, extinct wolf, and the modern wolf is the dog's nearest living relative."
+        liked
       />
     </Column>
     <Column>
