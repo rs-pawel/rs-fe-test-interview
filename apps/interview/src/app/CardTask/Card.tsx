@@ -4,17 +4,20 @@ import { FC } from 'react';
 interface CardProps {
   imageSrc: string;
   title: string;
-  liked: boolean;
+  description: string;
 }
 
-const Card: FC<CardProps> = ({ imageSrc, title, liked }) => (
+const Card: FC<CardProps> = ({ imageSrc, title, description }) => (
   <div className="card">
     <img className="card-media" src={imageSrc} height="200" alt={title} />
     <div className="card-content">
       <div className="card-title">{title}</div>
-      <i className="card-status">Do you like it? <strong>{liked ? 'yes' : 'no'}</strong></i>
+      <p className="card-description">{description}</p>
     </div>
     <div className="card-actions">
+      <button className="card-action-button" tabIndex={0} type="button">
+        Share
+      </button>
     </div>
   </div>
 );
