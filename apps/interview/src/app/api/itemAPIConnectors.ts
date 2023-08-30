@@ -1,4 +1,5 @@
 import Route from 'route-parser';
+import qs from 'qs';
 import {
   ItemAPIPaths,
   ListItemsRequest,
@@ -11,10 +12,12 @@ import {
 export const getItems = async (
   params?: ListItemsRequest
 ): Promise<ListItemsResponse> => {
-  // Implementation
-  // Path: ItemAPIPaths.listItems
 
-  return {} as ListItemsResponse;
+  const queryString = qs.stringify(params, { encode: false});
+  const response = await fetch(`${ItemAPIPaths.listItems}?${queryString}`)
+  const data = await response.json();
+
+  return data as ListItemsResponse;
 };
 
 export const createItem = async (
