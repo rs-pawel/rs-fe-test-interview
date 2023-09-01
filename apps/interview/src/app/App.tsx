@@ -40,8 +40,8 @@ const Nav = styled.div`
 `;
 
 const Logo = styled.div`
-  height: 80px;
-  background-image: url('/assets/images/logo_members.png');
+  height: 77px;
+  background-image: url('/assets/images/logo.png');
   background-repeat: no-repeat;
   background-size: contain;
 `;
